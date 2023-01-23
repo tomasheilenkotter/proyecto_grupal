@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+        .w3-half img:hover {
+            opacity: 1
+        }
+    </style>
+    <style type="text/css">
+        @font-face {
+            font-family: Roboto;
+            src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf");
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand btn-shine" href="#" style="font-size: 2rem;"><b>Best For Pets</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/main">Home</a>
+                    </li>
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #DCE1DE;" href="/changepwd">Actualizar Password</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled">
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex" role="search">
+                    {% if not session.user %}
+                    <a href="/auth" class="btn btn-outline-info" type="submit">Iniciar Sesión</a>
+                    {% else %}
+                    <a href="/logout" class="btn btn-primary" type="submit">Cerrar Sesión</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="background-color: white;">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase">
+            <h1 class="w3-jumbo text-center text-dark"><b><div class="waviy">
+                <span style="--i:1;" class="text-dark">H</span>
+                <span style="--i:2;" class="text-dark">O</span>
+                <span style="--i:3;" class="text-dark">T</span>
+                <span style="--i:4;" class="text-dark">E</span>
+                <span style="--i:5;" class="text-dark">L</span>
+                <span style="--i:6;" class="text-dark">E</span>
+                <span style="--i:7;" class="text-dark">S</span>
+                </div></b></h1>
+            <hr style="width: 99%;border:5px solid #FF6542 " class="w3-round text-center">
+        </div>
+
+        <!-- Services -->
+        <div class="container text-center align-items-center">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://circulo.bicevida.cl/imgCMS/628cf3914562c_conv.jpg"
+                                alt="foto agrupet" id="foto" style="width: 94%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Club de Perros y Gatos los Leones</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Club+de+Perros+y+Gatos+Los+Leones/@-33.421745,-70.674942,13z/data=!3m1!5s0x9662cf694f51f34d:0x6dfb9950a3401be6!4m10!1m2!2m1!1sclub+de+perros+y+gatos!3m6!1s0x9662cf695a21d239:0x770680fe3cf411d4!8m2!3d-33.421745!4d-70.6049042!15sChZjbHViIGRlIHBlcnJvcyB5IGdhdG9zIgOIAQFaGCIWY2x1YiBkZSBwZXJyb3MgeSBnYXRvc5IBEHBldF9zdXBwbHlfc3RvcmXgAQA!16s%2Fg%2F11g9w78s2y">Av. Los Leones 220</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://clubdeperrosygatos.negocio.site/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/clubdeperrosygatos?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/clubdeperrosygatos.cl/?_ga=2.72186773.727734881.1672940356-244201098.1672940356&_gac=1.60474335.1672940356.CjwKCAiAh9qdBhAOEiwAvxIokx0DbQSvEFMKUnT0rZmtfJAueO00tKVBf0bDnkFuhQ33lRlGsq211hoCNscQAvD_BwE"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.7)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TLcsN7coNqo0YLRSNaiwNDMzSk4zszRNNDJMMTK2tDKoMDc3MLMwSEs1Tk4zMTRMMfFSTM4pTVJISVUoSC0qyi9WqFRITywB0jkgnJqfl1oMAFUQGtg&q=club+de+perros+y+gatos+los+leones&oq=club+de+perros&aqs=chrome.1.35i39i355j46i39i175i199j69i57j69i59j46i20i175i199i263i512j46i175i199i512l2j69i60.3530j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662cf695a21d239:0x770680fe3cf411d4,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://d24omxunkc8y6h.cloudfront.net/production/assets/logo/logo-n-b-3c27d536bfbe1488f21805bb61bca151e34935ddb05a1137b3e992f5640ec4e8.png"
+                                alt="foto agrupet" id="foto" style="width: 67.5%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>El Patio Guarderia</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/El+Patio+Guarderia/@-33.2590363,-70.7128736,17z/data=!3m1!4b1!4m5!3m4!1s0x9662b94a29f3c9e3:0xe63bf8b4d8ca3852!8m2!3d-33.2590363!4d-70.7106849">San José 105, Colina</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.elpatioguarderia.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/elpatioguarderia/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/elpatioguarderia/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.5)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=el+patio+guarderia&oq=el+patio+guarderia&aqs=chrome.0.35i39j46i175i199i512j0i22i30l4j69i60j69i61.4416j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662b94a29f3c9e3:0xe63bf8b4d8ca3852,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="static\img\perryland.png"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>PerryLand</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/PERRYLAND+CHILE/@-33.2691688,-70.7011251,17z/data=!3m1!4b1!4m5!3m4!1s0x9662b9d5e00772cd:0xe0b5770eaa86f0ec!8m2!3d-33.2691639!4d-70.698953">Gral. San Martin Km. 19, parcela 1-A Colina</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.perryland.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/perrylandchile/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/perrylandchile/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(3.9)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TM9NNiw0z4k3YLRSNaiwNDMzSrJMMU01MDA3N0pOsTKoSDVIMjU3N0hNTLQwSzNITfbiLEgtKqrMScxLAQBYIRNM&q=perryland&oq=perryland&aqs=chrome.1.69i60j46i175i199i512j0i512l2j0i30l2j69i60l2.2531j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662b9d5e00772cd:0xe0b5770eaa86f0ec,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://hotelpetresort.cl/images/logo-hpr.png"
+                                    alt="foto agrupet" id="foto" style="width: 71%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Hotel Pet Resort Santiago</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Hotel+Pet+Resort+Santiago/@-33.39532,-70.5559857,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cec8fd32036b:0x291e486dbb88521e!8m2!3d-33.395318!4d-70.5538094">Las Tranqueras 707</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.hotelpetresort.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/petresortsantiago/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/petresort_santiago/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.2)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="static\img\peluditos.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 71%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Peluditos</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps?q=peluditos&um=1&ie=UTF-8&sa=X&ved=2ahUKEwiknZXrhq_8AhUCrpUCHTUzBHoQ_AUoAnoECAIQBA">Arauco 944</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.peluditos.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/peluditosmascotas?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/peluditosmascotas/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.5)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+        <!-- End page content -->
+    </div>
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+</body>
+
+</html>

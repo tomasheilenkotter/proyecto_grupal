@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+        .w3-half img:hover {
+            opacity: 1
+        }
+    </style>
+    <style type="text/css">
+        @font-face {
+            font-family: Roboto;
+            src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf");
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand btn-shine" href="#" style="font-size: 2rem;"><b>Best For Pets</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/main">Home</a>
+                    </li>
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #DCE1DE;" href="/changepwd">Actualizar Password</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled">
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex" role="search">
+                    {% if not session.user %}
+                    <a href="/auth" class="btn btn-outline-info" type="submit">Iniciar Sesión</a>
+                    {% else %}
+                    <a href="/logout" class="btn btn-primary" type="submit">Cerrar Sesión</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="background-color: white;">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase">
+            <h1 class="w3-jumbo text-center text-dark"><b>LOCALES PET FRIENDLY</b></h1>
+            <hr style="width: 99%;border:5px solid #FF6542 " class="w3-round text-center">
+        </div>
+
+        <!-- Services -->
+        <div class="container text-center align-items-center">
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">P</span>
+                <span style="--i:2;color: #FF6542;">R</span>
+                <span style="--i:3;color: #FF6542;">O</span>
+                <span style="--i:4;color: #FF6542;">V</span>
+                <span style="--i:5;color: #FF6542;">I</span>
+                <span style="--i:6;color: #FF6542;">D</span>
+                <span style="--i:7;color: #FF6542;">E</span>
+                <span style="--i:8;color: #FF6542;">N</span>
+                <span style="--i:9;color: #FF6542;">C</span>
+                <span style="--i:10;color: #FF6542;">I</span>
+                <span style="--i:11;color: #FF6542;">A</span>
+                </div></b></h1>
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://directorio.revistaya.cl/wp-content/uploads/2021/08/logo-pdc-300-px-1.png"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Peces de Ciudad Bar</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/PECES+DE+CIUDAD+Bar+Restaurant/@-33.4470486,-70.628302,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c5686ecd9e39:0xdc142c87703d395d!8m2!3d-33.4470486!4d-70.6261133">Condell 1333</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/pecesdeciudad_bar/?hl=es" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 380px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/pecesdeciudadsocialwine/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/pecesdeciudad_bar/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.9)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=peces+de+ciudad+bar&oq=peces+de+ciudad+bar&aqs=chrome.0.35i39i355j46i39i175i199j0i512j0i22i30l2j69i60l2j69i61.3319j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662c5686ecd9e39:0xdc142c87703d395d,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://tofuu.getjusto.com/orioneat-prod-resized/XNzQWvW7wc94JfQRq-200-x.webp"
+                                alt="foto agrupet" id="foto" style="width: 100%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>La Popular Infante</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/La+Popular+Infante/@-33.4424094,-70.6224431,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf39aaa4da07:0x224849689ef6743d!8m2!3d-33.4424102!4d-70.6202592">José Manuel Infante 1232</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.lapopularpizzaypan.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 380px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/lapopularpizzaypan/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/lapopularpizzaypan/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.6)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=la+popular+infante&sxsrf=AJOqlzWWWG-p1ggIPGDa-6GDkoja1Ivw2w%3A1673307044070&ei=pKO8Y5PwA_Go5OUPqMyvgAs&ved=0ahUKEwiT0ti_0rv8AhVxFLkGHSjmC7AQ4dUDCA8&uact=5&oq=la+popular+infante&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIECCMQJzIQCC4QgAQQhwIQxwEQrwEQFDIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yAggmOgcIIxCwAxAnOgoIABBHENYEELADOgcIABCwAxBDOhIILhDHARCvARDIAxCwAxBDGAE6FQguEMcBEK8BENQCEMgDELADEEMYAToSCC4QxwEQ0QMQyAMQsAMQQxgBOgsILhCvARDHARCABDoFCAAQgAQ6CggAEIAEEIcCEBQ6CAgAEIAEEMsBSgQIQRgASgQIRhgBULsGWI0OYIYPaAFwAXgAgAFaiAGZBJIBATiYAQCgAQHIARLAAQHaAQYIARABGAg&sclient=gws-wiz-serp#lrd=0x9662cf39aaa4da07:0x224849689ef6743d,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://restaurant.lusitano.cl/imgmodulo/logo/2.png?time=1496180408"
+                                    alt="foto agrupet" id="foto" style="width: 100%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Lusitano</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Lusitano/@-33.4360489,-70.6309537,15z/data=!4m10!1m2!2m1!1slusitano!3m6!1s0x9662c57c2591c511:0x9ae0ab51ad7af16d!8m2!3d-33.4476353!4d-70.625374!15sCghsdXNpdGFub1oKIghsdXNpdGFub5IBCnJlc3RhdXJhbnTgAQA!16s%2Fg%2F11bvv4_vdb?hl=es-419">Condell 1414</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.lusitano.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/profile.php?id=100088034336605&mibextid=ZbWKwL&_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/lusitano.cl/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/lusitano_cl?lang=es"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.4)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=lusitano&oq=lusitano&aqs=chrome.0.0i271j46i39i175i199j69i59j46i175i199i512j0i512l6.2810j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662c57c2591c511:0x9ae0ab51ad7af16d,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://scontent.fscl13-1.fna.fbcdn.net/v/t39.30808-6/311481915_546332484159361_419998697234246943_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeGeEHagnDo_QqkEN6WzPULQJ639anSR1l8nrf1qdJHWX0E1JVNplhrlzkmEpOdaLGX5bD1cfG5HQMKD3co-NIAI&_nc_ohc=eOVKD7GeI58AX_SYR6p&_nc_ht=scontent.fscl13-1.fna&oh=00_AfB4Rrb6NtY92fQa8eILj1kSIUGbW5jfM6br5Xo1Np_8eg&oe=63D0E036"
+                                    alt="foto agrupet" id="foto" style="width: 71%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Galpón Italia</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Galp%C3%B3n+Italia/@-33.4454419,-70.6278222,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cfc1ab8d2965:0x52748ee8efe441c8!8m2!3d-33.4454419!4d-70.6256335">Av. Italia 1175</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://bargalpon.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/GalponItalia/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/galponitalia/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.4)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.18169-9/25551855_1983125465235918_7569046621120046659_n.png?stp=dst-png_s851x315&_nc_cat=110&ccb=1-7&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_eui2=AeG6YB0shHVfe76K_7P7UrZ72bpFkzEisETZukWTMSKwRE7efTEX1z0DV0PHgnQ0wSTI6QdRcrWWFiH8_tIXK4ok&_nc_ohc=xMDSzPHFF9kAX-U3aHQ&_nc_ht=scontent.fscl9-2.fna&oh=00_AfANHgDlkdEnZH7j7DJeO7MP3kzpSR2rCPzwTHv_UJ04fQ&oe=63DD137B"
+                                    alt="foto agrupet" id="foto" style="width: 71%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Tío Tomate</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/TIO+TOMATE/@-33.44369,-70.7660627,12z/data=!4m10!1m2!2m1!1stio+tomate!3m6!1s0x9662c57f165c7795:0x63d032f217a4ad3a!8m2!3d-33.44369!4d-70.625987!15sCgp0aW8gdG9tYXRlIgOIAQFaDCIKdGlvIHRvbWF0ZZIBEHBpenphX3Jlc3RhdXJhbnTgAQA!16s%2Fg%2F11hbm1dv1d">Av. Italia 975</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://tio-tomate.negocio.site/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/TioTomatepizzas/"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/eltiotomate/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/tiotomatescl"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.5)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">L</span>
+                <span style="--i:2;color: #FF6542;">A</span>
+                <span style="--i:3;color: #FF6542;">S</span>
+                <br>
+                <span style="--i:4;color: #FF6542;">C</span>
+                <span style="--i:5;color: #FF6542;">O</span>
+                <span style="--i:6;color: #FF6542;">N</span>
+                <span style="--i:7;color: #FF6542;">D</span>
+                <span style="--i:8;color: #FF6542;">E</span>
+                <span style="--i:9;color: #FF6542;">S</span>
+                </div></b></h1>
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://d1fdloi71mui9q.cloudfront.net/SBtgnmg2RjqlT6Ebop8P_6ZJAoWYKrk2C4w5b"
+                                alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Jardín Mallinkrodt</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Jard%C3%ADn+Mallinkrodt+Las+Condes/@-33.4100414,-70.6272374,13z/data=!4m10!1m2!2m1!1sjardin+mallinkrodt!3m6!1s0x9662cf3e19136f37:0x55d08e884cba417a!8m2!3d-33.3970475!4d-70.5506878!15sChJqYXJkaW4gbWFsbGlua3JvZHRaFCISamFyZGluIG1hbGxpbmtyb2R0kgEKcmVzdGF1cmFudOABAA!16s%2Fg%2F11qywc7pl_">Las Condes 8392</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.jardinmallinkrodt.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/jardinmallinkrodt/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/jardinmallinkrodt/?hl=es-la"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.4)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.6435-9/74886499_802717903515550_2043810894185496576_n.png?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG-vPiNDtscANXwNaGMUIGOW4Zram01jmFbhmtqbTWOYaBrrJnXGuiC1tZ8JjJBQPGUcE4K-T1Yg_F3stOBCTE8&_nc_ohc=3Cx7uUSCZkUAX9tH5uQ&_nc_ht=scontent.fscl9-2.fna&oh=00_AfB4E6pyw08QPgMCgQJZj7PyX3LJLZWBc2WKeZSc8FAbcw&oe=63DD41E8" alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Mandarín oriental</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Mandarin+Oriental,+Santiago/@-33.5360858,-70.9497517,11z/data=!4m13!1m2!2m1!1smandarin+oriental+restaurant!3m9!1s0x9662cf25a3e94561:0x86600a0e3484602e!5m2!4m1!1i2!8m2!3d-33.4038208!4d-70.5833107!15sChxtYW5kYXJpbiBvcmllbnRhbCByZXN0YXVyYW50IgOIAQFaHiIcbWFuZGFyaW4gb3JpZW50YWwgcmVzdGF1cmFudJIBBWhvdGVsmgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVVF0TlRSeFNqSkJSUkFC4AEA!16s%2Fg%2F125n1yxbg">Presidente Kennedy 4601</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.mandarinoriental.com/en/santiago/las-condes/dine" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/MandarinOrientalSantiago/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/mo_santiago/?hl=es"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/mosantiagochile"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.6)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://www.soler.cl/wp-content/uploads/2020/01/logo-web-soler2020.png"
+                                    alt="foto agrupet" id="foto" style="width: 61%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Cecinas Soler</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Soler+Las+Condes/@-33.4246366,-70.5947414,14z/data=!4m10!1m2!2m1!1ssoler!3m6!1s0x9662ced9497f29db:0x3b7b0fdb0c7f6df3!8m2!3d-33.4052655!4d-70.5697822!15sCgVzb2xlciIDiAEBWgciBXNvbGVykgESY2hpbGVhbl9yZXN0YXVyYW504AEA!16s%2Fg%2F11b7k01fch?hl=es-419">Los Militares 5934</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.soler.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/solerchile/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/soler_chile/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.4)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t31.18172-8/18320543_1222648654512511_7075549107690662344_o.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHolTOXX2scSywM0vWYo05QOcYe7ZemH685xh7tl6YfrzraelPnvVU3NzBfVPNi_llyc28S9SYvGPnvRN6hLyyh&_nc_ohc=1S7SRiBIsfwAX8Y3Pwn&_nc_ht=scontent.fscl9-2.fna&oh=00_AfBExJUuYnBRMrNWWprq4JPBodJtfsUN0NfI6b6pvRjPeQ&oe=63DD22E0"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Puerto del Alto</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Puerto+Del+Alto/@-33.3908833,-70.54839,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ceb4360029b3:0xa5e9a254925036d5!8m2!3d-33.3908833!4d-70.5462013">Pdte. Kennedy 9001, Local 3235</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.puertodelalto.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/puertodelaltochile/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/puertodelaltochile/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.4)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://scontent.fscl9-1.fna.fbcdn.net/v/t31.18172-8/12829147_1673321409583531_4833296102885925381_o.jpg?_nc_cat=102&ccb=1-7&_nc_sid=174925&_nc_eui2=AeHOMMyLtQOfrJsanhg5B_FWvABUJKjxEbO8AFQkqPERs8zEeN34cv53wtDbb4sewTNa6nxbYr8vn0nRA9kzLJgS&_nc_ohc=sBdnCsUAFREAX9pw_P5&_nc_ht=scontent.fscl9-1.fna&oh=00_AfB_hAesZFPJqIfHOopYWK4RSE-1-1tVwemgUxN0Tni07w&oe=63DD4E65"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Bar La Virgen</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Bar+La+Virgen+Las+Condes/@-33.4246329,-70.6122513,13z/data=!4m10!1m2!2m1!1sbar+la+virgen!3m6!1s0x9662cf4a91aa2abd:0x7aa8a518252c227c!8m2!3d-33.4035449!4d-70.5749535!15sCg1iYXIgbGEgdmlyZ2VuWg8iDWJhciBsYSB2aXJnZW6SAQNiYXLgAQA!16s%2Fg%2F11rq41fdk4">Pdte. Riesco 5330, Local 104</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://barlavirgen.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://barlavirgen.cl/?gclid=Cj0KCQiA5NSdBhDfARIsALzs2EBosjDv-cwsy4bN3TNfjO5WFM3RRvmVzdt0mQAprd_u7GyS_z5YPlAaAmzlEALw_wcB"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/barlavirgen/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.0)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">L</span>
+                <span style="--i:2;color: #FF6542;">A</span>
+                <br>
+                <span style="--i:3;color: #FF6542;">R</span>
+                <span style="--i:4;color: #FF6542;">E</span>
+                <span style="--i:5;color: #FF6542;">I</span>
+                <span style="--i:6;color: #FF6542;">N</span>
+                <span style="--i:7;color: #FF6542;">A</span>
+                </div></b></h1>
+                <div class="row align-items-start">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSynTul8a4ewk2yA-TVFo732_OiWyf2bSYjmAO35s59UrkIGzzZNZDrQFUHb3KP2qMyu-g&usqp=CAU"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>La Copa Feliz</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/La+Copa+Feliz/@-33.445086,-70.5681767,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ce4e456e253d:0xeb2dcc432baf6894!8m2!3d-33.444929!4d-70.5661462">Av. Echeñique 6315</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://lacopafeliz.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/lacopafeliz/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/lacopafeliz/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.2)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="static\img\cafe_patio.png" alt="foto agrupet" id="foto" style="width: 84%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Café Patio La Esquina</b></h5>
+                                <p class="card-text">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Caf%C3%A9+Patio+La+Esquina/@-33.4468308,-70.5651107,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cfff309e4655:0x452cf80235aac02a!8m2!3d-33.4468308!4d-70.562922">Simón Bolívar 6597</a>
+                                </p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/patiolaesquina/?hl=es-la" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/patiolaesquina/?hl=es-la"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(5.0)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col">
+                            <div class="card text-center"
+                                style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                                <div class="card-header">
+                                    <img src="https://tofuu.getjusto.com/orioneat-prod-resized/fRN6d9xsgnxvqPmMj-200-x.webp"
+                                        alt="foto agrupet" id="foto" style="width: 100%;">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>La Fuente Reina</b></h5>
+                                    <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                            href="https://www.google.com/maps/place/La+Fuente+Reina/@-33.4416667,-70.5452443,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ce6ee23a6d41:0x428d73a4f02fff8b!8m2!3d-33.4416643!4d-70.5430075">Av. Echeñique 8540</a></p>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.lafuentereina.cl/" class="btn btn-primary">Visitar página</a>
+                                </div>
+                                <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                    <div class="col">
+                                        <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/lafuentereina/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/lafuentereina/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                        <a target="_blank" rel="noopener noreferrer" href="https://mobile.twitter.com/lafuentereina"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.2)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-around">
+                    <div class="col-4">
+                        <div class="card text-center"
+                                style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                                <div class="card-header">
+                                    <img src="https://tofuu.getjusto.com/orioneat-prod-resized/dRCJ6vWZNPtMjLMkt-200-x.webp"
+                                        alt="foto agrupet" id="foto" style="width: 70%;">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>Chevere y Bakan</b></h5>
+                                    <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                            href="https://www.google.com/maps/place/Chevere+Y+Bakan/@-33.4401967,-70.545163,17z/data=!3m1!4b1!4m5!3m4!1s0x9662d166eef1cea7:0x5636cab11e004976!8m2!3d-33.4401967!4d-70.5429743">Carlos Ossandon 1635</a></p>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.chevereybakan.cl/" class="btn btn-primary">Visitar página</a>
+                                </div>
+                                <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                    <div class="col">
+                                        <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/chevereybacan/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/chevere_bakan/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.5)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card text-center"
+                                style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                                <div class="card-header">
+                                    <img src="https://scontent.fscl9-1.fna.fbcdn.net/v/t1.6435-9/67754586_2081085648859755_7449011142959038464_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeEriSH99Dqfwr3LNTlZrpx9SDshpt1bk3xIOyGm3VuTfJ1ZpsXPEIL_oSzBWy0oLPzuueiMWTZBEHxsy884JrmF&_nc_ohc=4LerFHdZ7dcAX_rTRtQ&_nc_ht=scontent.fscl9-1.fna&oh=00_AfB30dJcRgLVa-wte1ZPQb6E8ZPnOdLOYUf7QE295N_jfg&oe=63DD55AC"
+                                        alt="foto agrupet" id="foto" style="width: 70%;">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>El Duo</b></h5>
+                                    <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                            href="https://www.google.com/maps/place/El+DUO/@-33.4530421,-70.5661546,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ce483b4a011b:0x1321b75deaa90219!8m2!3d-33.4530421!4d-70.5639659">Av. Larraín 6367</a></p>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://elduorestaurant.cl/" class="btn btn-primary">Visitar página</a>
+                                </div>
+                                <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                    <div class="col">
+                                        <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/RestaurantElDuo/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/restaurant.elduo/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.6)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                    <span style="--i:1;color: #FF6542;">V</span>
+                    <span style="--i:2;color: #FF6542;">I</span>
+                    <span style="--i:3;color: #FF6542;">T</span>
+                    <span style="--i:4;color: #FF6542;">A</span>
+                    <span style="--i:5;color: #FF6542;">C</span>
+                    <span style="--i:6;color: #FF6542;">U</span>
+                    <span style="--i:7;color: #FF6542;">R</span>
+                    <span style="--i:8;color: #FF6542;">A</span>
+                    </div></b></h1>
+                <div class="row align-items-start">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="data:image/png;base64,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"
+                                    alt="foto agrupet" id="foto" style="width: 100%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Caoba Bar</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/CAOBA+BAR/@-33.4026641,-70.5923351,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cfec8b5a7381:0x776af53046b0faf0!8m2!3d-33.4026641!4d-70.5901464">Alonso de Córdova 4156</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://caobabar.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/caoba.bar/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.7)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="static\img\arca.png" alt="foto agrupet" id="foto" style="width: 71%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Arca Bar</b></h5>
+                                <p class="card-text">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Arca+Bar/@-33.3972025,-70.6001197,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cfe6bdc049f1:0xae691c9d8f796c3d!8m2!3d-33.3972096!4d-70.5978669">Av. Nueva Costanera 3986</a>
+                                </p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://arcabar.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/arcabarchile/"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/arca_cl/?hl=es"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.6)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col">
+                            <div class="card text-center"
+                                style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                                <div class="card-header">
+                                    <img src="https://static.wixstatic.com/media/485caf_fabcbdf6db9d418d8a85e350eceafb42~mv2.png/v1/fill/w_270,h_271,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/logo-lagerhaus.png"
+                                        alt="foto agrupet" id="foto" style="width: 70%;">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>LagerHaus Bar</b></h5>
+                                    <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                            href="https://www.google.com/maps/place/Lagerhaus+Bar+Vitacura/@-33.4065234,-70.600885,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cfe6b571a02d:0xafae542f1c8461fa!8m2!3d-33.4065224!4d-70.5986975">Av. Vitacura 3285</a></p>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.lagerhaus.cl/vitacura" class="btn btn-primary">Visitar página</a>
+                                </div>
+                                <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                    <div class="col">
+                                        <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/Lagerhausvitacura/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/lagerhaus_vitacura/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.3)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-around">
+                    <div class="col-4">
+                        <div class="card text-center"
+                                style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                                <div class="card-header">
+                                    <img src="https://tofuu.getjusto.com/orioneat-prod-resized/dRCJ6vWZNPtMjLMkt-200-x.webp"
+                                        alt="foto agrupet" id="foto" style="width: 70%;">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>Mazaccone</b></h5>
+                                    <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                            href="https://www.google.com/maps/place/Mazaccone/@-33.3880665,-70.5664647,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c92d3aac06db:0x846fada011f32fb0!8m2!3d-33.3880665!4d-70.564276">Gerónimo de Alderete 1603</a></p>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/mazaccone/?hl=es" class="btn btn-primary">Visitar página</a>
+                                </div>
+                                <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                    <div class="col">
+                                        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/lagerhaus_vitacura/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                        <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/mazaccone"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.3)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card text-center"
+                                style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                                <div class="card-header">
+                                    <img src="https://tofuu.getjusto.com/orioneat-prod/79AeEjChY6XGdBe5n-0002.jpg"
+                                        alt="foto agrupet" id="foto" style="width: 68.5%;">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>Romaria</b></h5>
+                                    <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                            href="https://www.google.com/maps/place/Romaria/@-33.4049367,-70.5998641,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf38016f625b:0xbe4e72f73e5358b8!8m2!3d-33.4049367!4d-70.5976754">Av. Vitacura 3396, Casa 9</a></p>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.romaria.cl/" class="btn btn-primary">Visitar página</a>
+                                </div>
+                                <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                    <div class="col">
+                                        <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/romaria.cl/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/romariapizzeria/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.5)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <!-- End page content -->
+    </div>
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+</body>
+
+</html>

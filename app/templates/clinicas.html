@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+        .w3-half img:hover {
+            opacity: 1
+        }
+    </style>
+    <style type="text/css">
+        @font-face {
+            font-family: Roboto;
+            src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf");
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand btn-shine" href="#" style="font-size: 2rem;"><b>Best For Pets</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/main">Home</a>
+                    </li>
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #DCE1DE;" href="/changepwd">Actualizar Password</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled">
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex" role="search">
+                    {% if not session.user %}
+                    <a href="/auth" class="btn btn-outline-info" type="submit">Iniciar Sesión</a>
+                    {% else %}
+                    <a href="/logout" class="btn btn-primary" type="submit">Cerrar Sesión</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="background-color: white;">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase">
+            <h1 class="w3-jumbo text-center text-dark"><b>CLINICAS VETERINARIAS</b></h1>
+            <hr style="width: 99%;border:5px solid #FF6542" class="w3-round text-center">
+        </div>
+
+        <!-- Services -->
+        <div class="container text-center align-items-center">
+            <h1 class="text text-center" style="font-size: 60px;color: #FF6542;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">P</span>
+                <span style="--i:2;color: #FF6542;">R</span>
+                <span style="--i:3;color: #FF6542;">O</span>
+                <span style="--i:4;color: #FF6542;">V</span>
+                <span style="--i:5;color: #FF6542;">I</span>
+                <span style="--i:6;color: #FF6542;">D</span>
+                <span style="--i:7;color: #FF6542;">E</span>
+                <span style="--i:8;color: #FF6542;">N</span>
+                <span style="--i:9;color: #FF6542;">C</span>
+                <span style="--i:10;color: #FF6542;">I</span>
+                <span style="--i:11;color: #FF6542;">A</span>
+                </div></b></h1>
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://scontent.fscl13-2.fna.fbcdn.net/v/t39.30808-6/294670072_465991205533921_8591203171205962939_n.png?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFDki75nHyDgo7munOMrMwKw2H8l-y5wwrDYfyX7LnDCu0emW5HDZs5HpHYcbhjDCobWIz-AG0QvBFr3XZzduzd&_nc_ohc=KF6-VdfcOPoAX8Fy4fR&_nc_ht=scontent.fscl13-2.fna&oh=00_AfDhiffr4Oad8FgA--k-GYzs9qhsaiFuAl_ewaPcLXfGXw&oe=63D1A4FB"
+                                alt="foto agrupet" id="foto" style="width: 69.5%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Agrupet Clínica Veterinaria</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Agrupet+Cl%C3%ADnica+Veterinaria/@-33.4503054,-70.608477,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf9089651117:0xea978212622fdd9!8m2!3d-33.4503054!4d-70.6062883?hl=es-419">Simón
+                                    Bolívar 2440</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/AgrupetClinica/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/agrupetclinica/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://mobile.twitter.com/agrupetclinica"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.7)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TDYsMzApKUk3YLRSMaiwNDMzSk6zNLCwNDM1NDQ0tzKoSE20NLcwMjQyMzJKS0mx9GJPTC8qLUgtAQAB_hER&q=agrupet&oq=agrupet&aqs=chrome.1.69i60j46i39i175i199j0i512j0i30j69i60l2.2431j0j4&sourceid=chrome&ie=UTF-8#lrd=0x9662cf9089651117:0xea978212622fdd9,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://www.laguiadesantiagodechile.com/uploads/imagenes/clasificados/8/principal/200xAuto/180923073940422713.jpg"
+                                alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Clínica Veterinaria San Cristóbal</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterinaria+San+Crist%C3%B3bal/@-33.4303817,-70.6073485,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf7175923ba7:0xa5e99a6b7c55e62b!8m2!3d-33.4303817!4d-70.6051598">Eliodoro
+                                    Yañez 2274</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/VeterinariaSanCristobalChile/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/veterinariasancristobal/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.1)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?gs_ssp=eJwFwUsKgCAQAFDa1iVs0dpPqOgRusU4qEyIgUpIp--9deOZy5Hw_nIViz_EdMYoTFZa7dQZwHoxQUfnwASLWkejwrVjoUoI7I0jNqrQCFiHyrBRH0-A8gN61Rv-&q=clinica+veterinaria+san+cristobal&oq=clinica+veterinaria+san+cristobal&aqs=chrome.1.35i39j46i175i199i512j0i512l3j69i60l3.10765j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662cf7175923ba7:0xa5e99a6b7c55e62b,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://www.zoodata.com/zoodata/wp-content/uploads/2018/04/VET-TUS-MASCOTAS.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 100%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Veterinaria Tus Mascotas</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Agrupet+Cl%C3%ADnica+Veterinaria/@-33.4503054,-70.608477,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf9089651117:0xea978212622fdd9!8m2!3d-33.4503054!4d-70.6062883?hl=es-419">Simón
+                                        Bolívar 2440</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/tusmascotas.cl/?hl=es"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.7)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?gs_ssp=eJwFwTkOgCAQAMDYmthb0lizIHI9wV9scCEUYgJoeL4z88ITFyK5r7huACa_wXBayxANWI1Alzw8DCJrSGGIu1DWRTjXjzrVXLBmZP1t7MYWno7tB5SaGLU&q=veterinaria+tus+mascotas&oq=veterinaria+tus&aqs=chrome.1.69i57j46i175i199i512j0i512j0i10i512l6.3285j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662cf7086a0ed25:0xee87e4acf31489f0,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://static.wixstatic.com/media/e5c974_9cef13bd4e9e4f5d99cdb53aa7ab4206~mv2.jpg/v1/fill/w_320,h_320,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Logo%20Nervet_letras_edited.jpg" alt="foto agrupet" id="foto" style="width: 71%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Clínica Veterinaria NerVet</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterinaria+Nervet/@-33.4378381,-70.6167272,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf78dce33e7b:0xc7c8d206409798b0!8m2!3d-33.4378381!4d-70.6145385">Alférez Real 1464</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.nervet.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/ClinicaNervet/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/clinicanervet/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.4)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://www.guthivet.cl/wp-content/uploads/2021/01/logo-2.png" alt="foto agrupet" id="foto" style="width: 78%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Clínica Veterinaria Guthi Vet</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Agrupet+Cl%C3%ADnica+Veterinaria/@-33.4503054,-70.608477,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf9089651117:0xea978212622fdd9!8m2!3d-33.4503054!4d-70.6062883?hl=es-419">Jaime Guzmán Errázuriz 3040</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.guthivet.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/GuthiVetClinicaVeterinaria"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/guthivet.clinica/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.7)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h1 class="text text-center text-light" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;;">L</span>
+                <span style="--i:2;color: #FF6542;">A</span>
+                <span style="--i:3;color: #FF6542;">S</span>
+                <br>
+                <span style="--i:4;color: #FF6542;">C</span>
+                <span style="--i:5;color: #FF6542;">O</span>
+                <span style="--i:6;color: #FF6542;">N</span>
+                <span style="--i:7;color: #FF6542;">D</span>
+                <span style="--i:8;color: #FF6542;">E</span>
+                <span style="--i:9;color: #FF6542;">S</span>
+                </div></b></h1>
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://fundacionsetbachile.org/wp-content/uploads/2019/06/eiCi0AdV_400x400.png"
+                                alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Veterinaria Municipal</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Veterinaria+Municipal+Las+Condes/@-33.4271664,-70.5281074,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cdd56622ccef:0x6232e77098f496f3!8m2!3d-33.4271664!4d-70.5259187">Nueva Bilbao 12600</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.lascondes.cl/servicios/mascotas/servicios.html" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/GuthiVetClinicaVeterinaria"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/munilascondes/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.6)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ1G69BkcyzjHlJ2T5ticu2To86YulfQw2JH5KRpRTNAWTxFBJAABmU_FAMFBzipNJSXc&usqp=CAU"
+                                alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Clínica Veterinaria Pasteur</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterinaria+Pasteur/@-33.4151923,-70.5547994,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ceecf28ae40d:0x5fde1ebd15716a6c!8m2!3d-33.4151916!4d-70.5526159">Avenida Tomás Moro 710</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.veterinariapasteur.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/clinicaveterinariapasteur/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.4)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://thumb-cdn.soluall.net/prod/adv_ads/ad300box/54eb2187-79e0-4507-90e7-71efac1f1929/logotipo-v2.png"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Clínica Veterinaria S.O.S Animal</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterinaria+S.O.S.+Animal/@-33.4122119,-70.6007676,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf409073ae47:0x5294ffa7fc072def!8m2!3d-33.4122119!4d-70.5985789">Pdte. Riesco 3058</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://veterinariasosanimal.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/veterinariasosanimal/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/veterinariasosanimal/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.7)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://petsmann.cl/wp-content/uploads/2021/06/FINAL-LOGO-PETSMANN-R_Mesa-de-trabajo-1-1.png"
+                                    alt="foto agrupet" id="foto" style="width: 105%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Veterinaria PetsMann</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Veterinaria+y+Peluquer%C3%ADa+-+PetsMann/@-33.413698,-70.5808517,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf1f4022da8d:0xeae5e03be2fc60f7!8m2!3d-33.413698!4d-70.578663?hl=es-419">Coronel Pereira 180</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://petsmann.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/petsmann/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/petsmann.cl/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.6)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://scontent.fscl13-2.fna.fbcdn.net/v/t39.30808-6/303307325_619977426170357_2365982207968381646_n.png?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeF_TLdCO8MkPMu5kx5O7MTj49vgYN-foaHj2-Bg35-hoQiu5InTP1spy2fBNUTOcbsUazJrutIHeeSZTk6LksL5&_nc_ohc=JW5CgmPdKiYAX8kOdG5&_nc_oc=AQkS-UtagnJHsgbgopJTJIPNSWapQA056nxhLBmb0wT1IcbVeRrZTbF7PDFwojuv4zs&_nc_ht=scontent.fscl13-2.fna&oh=00_AfDsOONKCeXCybtLJqZN-ke98mXCZenSSMoLlTY75xpubA&oe=63D07596"
+                                    alt="foto agrupet" id="foto" style="width: 69%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>IntegraVet</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Agrupet+Cl%C3%ADnica+Veterinaria/@-33.4503054,-70.608477,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf9089651117:0xea978212622fdd9!8m2!3d-33.4503054!4d-70.6062883?hl=es-419">Latadia 5017</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://integravet.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/integravet_cl/?hl=es"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.4)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h1 class="text text-center text-light" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">L</span>
+                <span style="--i:2;color: #FF6542;">A</span>
+                <br>
+                <span style="--i:3;color: #FF6542;">R</span>
+                <span style="--i:4;color: #FF6542;">E</span>
+                <span style="--i:5;color: #FF6542;">I</span>
+                <span style="--i:6;color: #FF6542;">N</span>
+                <span style="--i:7;color: #FF6542;">A</span>
+                </div></b></h1>
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://static.wixstatic.com/media/7c97c7_f03d24042c184c08811df5a622b65b55~mv2.png"
+                                alt="foto agrupet" id="foto" style="width: 63%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Clínica Veterinaria La Reina</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterinaria+La+Reina/@-33.4512738,-70.5559534,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ce408435c317:0xf0026f59dcd24bfc!8m2!3d-33.4512738!4d-70.5537647">Valladolid 26</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.cvlareina.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/clinicaveterinarialareina/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/cvlareina/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.8)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="data:image/png;base64,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" alt="foto agrupet" id="foto" style="width: 93%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Dr Chilet Veterinario</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterinaria+Pasteur/@-33.4151923,-70.5547994,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ceecf28ae40d:0x5fde1ebd15716a6c!8m2!3d-33.4151916!4d-70.5526159">Av. Echeñique 6785</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.drchilet.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/100063591473624/photos/"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.2)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="http://www.republicaanimal.cl/wp-content/uploads/2019/01/logo11.png"
+                                    alt="foto agrupet" id="foto" style="width: 61%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>República Animal</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/REPUBLICA+ANIMAL/@-33.4448553,-70.5675982,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf795e88cb43:0x8151cd7cc78bb49e!8m2!3d-33.4448546!4d-70.5654096">Av. Echeñique 6401</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="http://www.republicaanimal.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/ClinicaVeterinariaRepublicaAnimal/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/republica_animal_veterinaria/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.4)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://img77.uenicdn.com/image/upload/v1618248273/business/35737d79-8214-404d-86b2-39ccaa0b295f.png"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Clínica Veterinaria Alemana</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterinaria+Alemana/@-33.4522464,-70.5631453,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ce47f2c9489b:0x77b9cfd392bcec28!8m2!3d-33.4522475!4d-70.5609593">Av. Larraín 6666</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.veterinaria.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/veterinaria.alemana/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/veterinaria_alemana/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.1)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="data:image/png;base64,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"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Clínica Veterinaria Cafati & Aguilar</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Cl%C3%ADnica+veterinaria+Cafati%26Aguilar/@-33.43122,-70.5695752,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf82a392370b:0xe480a1b3e6b77ead!8m2!3d-33.43122!4d-70.5673865">Av. Francisco Bilbao 6261</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://clinica.veterinariacafati.cl/clinicaveterinariafull" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/people/Veterinaria-Cafati-Aguilar/100067553970788/?paipv=0&eav=AfaeKILbBAhnoeMteGCOAffSfOFMCcezzYU48z2kTqQHshCk0DxigXvc9rw15Xh6zVw&_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/veterinariacafatiaguilar/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.8)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h1 class="text text-center text-light" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">V</span>
+                <span style="--i:2;color: #FF6542;">I</span>
+                <span style="--i:3;color: #FF6542;">T</span>
+                <span style="--i:4;color: #FF6542;">A</span>
+                <span style="--i:5;color: #FF6542;">C</span>
+                <span style="--i:6;color: #FF6542;">U</span>
+                <span style="--i:7;color: #FF6542;">R</span>
+                <span style="--i:8;color: #FF6542;">A</span>
+                </div></b></h1>
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="https://buscalia.cl/wp-content/uploads/2022/08/PetHappy-6.png"
+                                alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>PetHappy Casa Vitacura</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Pet+Happy+Casa+Vitacura/@-33.3835695,-70.5522483,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c9b12b444fe3:0xce4063a99aff6f06!8m2!3d-33.3835695!4d-70.5500596">Av. Vitacura 9015</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.pethappy.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/PetHappyCL/"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/pethappycl_casavitacura/?hl=es"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.8)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                        <div class="card-header">
+                            <img src="data:image/jpeg;base64,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Kbgh0x6LBhpbI8cjaL/hNCuFFWkrhc6dQzpyMHECO8x8Qr07q1pUnqLrAHSmULd4gPes24yusDRuWIA6ibXF+IVUF/pqFe6t1emcA6GKVST033VevlO1ccOpVNnpq3ohdxnYMGA+BVT7wJ9VbGk3eakVu8UJUyM61AIAPmMM32mBG6HG63ym2tKuEq6qnehR6FZFpOVqUyd9JYLkZyrbHOxPljzLr4g9At802unS9BwO8oDNQhyultWaowCf1Ptkoq2qMyOygshJQ43XUNJwfDIOJjTh9IIlMU1CIVZFxspU5UjyIMCMcC4rWqX9eiXqFEarkVBTCaQ6pT7vA1sQdQbOwyPEie3PHKiWGrWRWqVatKm2guVPf1EDaEBJCIpbp9EeckycOpK4qCmoYF2BA3BqY1nP9rAz54HlFPh9JSpVFBTWUwPV706nI9rHcwNfl/iYurenXGxZcONxpdSVdcMARhgw3AO06swULdELFQF1MWbH0mIAJPt2EzwEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQP/Z" alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Clínica Veterinaria Nueva Costanera</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterinaria+Nueva+Costanera/@-33.4064826,-70.6013431,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf816cfb0fb3:0x9844e52f12aa6e56!8m2!3d-33.4064826!4d-70.5991544">Av. Nueva Costanera 3110</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.veterinarianuevacostanera.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/vetnuevacostanera/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/vetnuevacostanera/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.8)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="data:image/png;base64,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"
+                                    alt="foto agrupet" id="foto" style="width: 89%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Centro Veterinario Tabancura</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Arf/@-33.3859112,-70.5615767,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c932fd74dcef:0x3869e4e7a41405bf!8m2!3d-33.3859112!4d-70.559388?hl=es-419">Pje. la Aurora 1648</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="http://www.cvtabancura.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/centroveterinariotabancura/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/cvtabancura/?hl=es-la"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.5)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="https://pbs.twimg.com/profile_images/1161395670114172928/PoISY16W_400x400.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Arf</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterinaria+Alemana/@-33.4522464,-70.5631453,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ce47f2c9489b:0x77b9cfd392bcec28!8m2!3d-33.4522475!4d-70.5609593">Av. Vitacura 7773</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://arf.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/arf.santiago/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/arf.vitacura/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.5)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-left: 0px;padding-right: 0px;height: 460px;padding-top: 0px">
+                            <div class="card-header">
+                                <img src="data:image/jpeg;base64,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"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Clínica Veterinaria Dra Vergara</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Cl%C3%ADnica+Veterinaria+Dra+Vergara/@-33.379367,-70.5409917,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c910e8bb1ead:0x89f227ea85e5f5e5!8m2!3d-33.379367!4d-70.538803">Tabancura 1714</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://clinica-veterinaria-dra-vergara.negocio.site/?utm_source=gmb&utm_medium=referral" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/people/Cl%C3%ADnica-Veterinaria-Doctora-Vergara/100068410473586/?paipv=0&eav=AfaoLWEcppr8zev2lOWBvE8j9FBLVNbXvZ1v64iwk4bVtsimq7H6vsDneuRUQpEjlFs&_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/dra.vergarachile/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px;"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.9)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px;"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <!-- End page content -->
+    </div>
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+</body>
+
+</html>

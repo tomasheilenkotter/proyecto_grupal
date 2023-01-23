@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+        .w3-half img:hover {
+            opacity: 1
+        }
+    </style>
+    <style type="text/css">
+        @font-face {
+            font-family: Roboto;
+            src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf");
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand btn-shine" href="#" style="font-size: 2rem;"><b>Best For Pets</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/main">Home</a>
+                    </li>
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #DCE1DE;" href="/changepwd">Actualizar Password</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled">
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex" role="search">
+                    {% if not session.user %}
+                    <a href="/auth" class="btn btn-outline-info" type="submit">Iniciar Sesión</a>
+                    {% else %}
+                    <a href="/logout" class="btn btn-primary" type="submit">Cerrar Sesión</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="background-color: white;">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase">
+            <h1 class="w3-jumbo text-center text-dark"><b>PARQUES</b></h1>
+            <hr style="width: 99%;border:5px solid #FF6542 " class="w3-round text-center">
+        </div>
+
+        <!-- Services -->
+        <div class="container text-center align-items-center">
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">P</span>
+                <span style="--i:2;color: #FF6542;">R</span>
+                <span style="--i:3;color: #FF6542;">O</span>
+                <span style="--i:4;color: #FF6542;">V</span>
+                <span style="--i:5;color: #FF6542;">I</span>
+                <span style="--i:6;color: #FF6542;">D</span>
+                <span style="--i:7;color: #FF6542;">E</span>
+                <span style="--i:8;color: #FF6542;">N</span>
+                <span style="--i:9;color: #FF6542;">C</span>
+                <span style="--i:10;color: #FF6542;">I</span>
+                <span style="--i:11;color: #FF6542;">A</span>
+                </div></b></h1>
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://providencia.cl/provi/site/artic/20220209/imag/foto_0000005820220209113458/plaza.png"
+                                alt="foto agrupet" id="foto" style="width: 100%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Plaza Rio de Janeiro</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Plaza+Rio+de+Janeiro/@-33.4323199,-70.5966278,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf0b9cb324c3:0xc95ef00b5418490a!8m2!3d-33.4323199!4d-70.5944391">La Brabanzón, Providencia</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <span class="text-dark"><b>(4.6)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=plaza+rio+de+janeiro&oq=plaza+rio+de+janeiro&aqs=chrome.0.35i39j46i175i199i512j0i512l8.3380j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662cf0b9cb324c3:0xc95ef00b5418490a,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="http://www.fotografiaaerea.cl/imghtml/galeria/aerea/Plaza-La-Alcaldesa-RM-.jpg"
+                                alt="foto agrupet" id="foto" style="width: 100%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Plaza La Alcaldesa</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Plaza+La+Alcaldesa/@-33.4360555,-70.6014429,19z/data=!4m13!1m7!3m6!1s0x9662cf9fe7194a53:0xc38f2f3ab371ab6a!2sPlaza+de+la+Alcaldesa,+Providencia,+Regi%C3%B3n+Metropolitana!3b1!8m2!3d-33.438004!4d-70.59921!3m4!1s0x9662cf750c5d0c6d:0x2dbc5e398eb64ea0!8m2!3d-33.4361846!4d-70.6003903">Portal, Providencia</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <span class="text-dark"><b>(4.5)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Plaza+La+Alcaldesa/@-33.437483,-70.6024073,17z/data=!4m15!1m7!3m6!1s0x9662cf9fe7194a53:0xc38f2f3ab371ab6a!2sPlaza+de+la+Alcaldesa,+Providencia,+Regi%C3%B3n+Metropolitana!3b1!8m2!3d-33.438004!4d-70.59921!3m6!1s0x9662cf750c5d0c6d:0x2dbc5e398eb64ea0!8m2!3d-33.4361846!4d-70.6003903!9m1!1b1"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://site.visitsantiago.org/wp-content/uploads/2021/08/Parque-Ines-de-Suarez-scaled.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 100%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Parque Inés de Suarez</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Parque+In%C3%A9s+de+Su%C3%A1rez/@-33.4403825,-70.6138583,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf8293d92005:0xb68fea6b9d1a7504!8m2!3d-33.4403825!4d-70.6116696">Antonio Varas 1510, Providencia</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.6)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?gs_ssp=eJzj4tZP1zcsSUk3STMyMGC0UjWosDQzM0pOszCyNE6xBIqZWhlUJJlZpKUmmiVZphgmmpsamHiJFiQWFZamKmTmpRYrpKQqFJcmFqVWAQALHRYt&q=parque+ines+de+suarez&oq=parque+ines+de&aqs=chrome.1.69i57j46i175i199i433i512j0i512j46i175i199i512j0i512l3j69i60.4611j0j7&sourceid=chrome&ie=UTF-8#lrd=0x9662cf8293d92005:0xb68fea6b9d1a7504,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">L</span>
+                <span style="--i:2;color: #FF6542;">A</span>
+                <span style="--i:3;color: #FF6542;">S</span>
+                <br>
+                <span style="--i:4;color: #FF6542;">C</span>
+                <span style="--i:5;color: #FF6542;">O</span>
+                <span style="--i:6;color: #FF6542;">N</span>
+                <span style="--i:7;color: #FF6542;">D</span>
+                <span style="--i:8;color: #FF6542;">E</span>
+                <span style="--i:9;color: #FF6542;">S</span>
+                </div></b></h1>
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://fastly.4sqi.net/img/general/600x600/10607391_rgLH4M_rb2YFyNtER0ksxCIo4dDcXeH8jbsG6DYTd1s.jpg"
+                                alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Parque Canino</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Parque+Canino/@-33.4206293,-70.6258182,14z/data=!4m10!1m2!2m1!1sparque+canino!3m6!1s0x9662cf1148b424fd:0xa439d7cdc616289b!8m2!3d-33.4206293!4d-70.5907993!15sCg1wYXJxdWUgY2FuaW5vkgEIZG9nX3BhcmvgAQA!16s%2Fg%2F11c5_wsch7">Pdte Errázuriz 3642-3700</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <span class="text-dark"><b>(4.5)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://conmiperro.cl/wp-content/uploads/2018/06/parque-juan-pablo-11.jpg"
+                                alt="foto agrupet" id="foto" style="width: 96%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Parque Canino II</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Parque+Canino+II/@-33.4192066,-70.5863747,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf1a2138806f:0xe643902df2bca3!8m2!3d-33.4192066!4d-70.584186?hl=es-419">Pdte Errázuriz / Asturias</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <span class="text-dark"><b>(4.3)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://www.almagro.cl/laguiaalmagro/wp-content/uploads/2016/02/06.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 93%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Parque Canino del Inca I</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Parque+Canino+Del+Inca+I/@-33.4033855,-70.6370938,14z/data=!4m10!1m2!2m1!1sparque+canino!3m6!1s0x9662cee0e5032ea5:0x2a650112f515a854!8m2!3d-33.4134778!4d-70.5702294!15sCg1wYXJxdWUgY2FuaW5vkgEEcGFya-ABAA!16s%2Fg%2F11hbqxt7cw">La Capitanía 442</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.2)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">L</span>
+                <span style="--i:2;color: #FF6542;">A</span>
+                <br>
+                <span style="--i:3;color: #FF6542;">R</span>
+                <span style="--i:4;color: #FF6542;">E</span>
+                <span style="--i:5;color: #FF6542;">I</span>
+                <span style="--i:6;color: #FF6542;">N</span>
+                <span style="--i:7;color: #FF6542;">A</span>
+                </div></b></h1>
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://fastly.4sqi.net/img/general/600x600/8438810_b6bwXJssNXFJt61VlwFZf0IRBkHenuZlzRHxyhMzn5s.jpg"
+                                alt="foto agrupet" id="foto" style="width: 69%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Samantha Pelecher Park</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Samantha+Pelecher+Park/@-33.4493439,-70.6031315,14z/data=!4m10!1m2!2m1!1sparque+canino!3m6!1s0x9662ce4957fb9d0b:0x60d7277ce50909f1!8m2!3d-33.4493439!4d-70.5681126!15sCg1wYXJxdWUgY2FuaW5vkgEIZG9nX3BhcmvgAQA!16s%2Fg%2F11dyx5dk41">Joaquín Godoy 427</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <span class="text-dark"><b>(4.3)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://indiehoy.com/wp-content/uploads/2014/10/parque-chile-santiago.jpg"
+                                alt="foto agrupet" id="foto" style="width: 90%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Parque Padre Hurtado</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Parque+Padre+Hurtado/@-33.43178,-70.5475695,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ce60036c9f7b:0x310c5e359bfa9086!8m2!3d-33.43178!4d-70.5453808">Av. Francisco Bilbao 8105</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <span class="text-dark"><b>(4.5)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://mapio.net/images-p/43061944.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 90%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Plaza Carlos Ossandon</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Plaza+Carlos+Ossand%C3%B3n/@-33.4422673,-70.5453348,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ce6ed937fb35:0x685e64e9d69511fd!8m2!3d-33.4422673!4d-70.5431461?hl=es-419">Carlos Ossandon / Av. Echeñique</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.agrupetclinica.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.4)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">V</span>
+                <span style="--i:2;color: #FF6542;">I</span>
+                <span style="--i:3;color: #FF6542;">T</span>
+                <span style="--i:4;color: #FF6542;">A</span>
+                <span style="--i:5;color: #FF6542;">C</span>
+                <span style="--i:6;color: #FF6542;">U</span>
+                <span style="--i:7;color: #FF6542;">R</span>
+                <span style="--i:8;color: #FF6542;">A</span>
+                </div></b></h1>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://static.wixstatic.com/media/911250_a8db7ff4befb483d8c79b54caf45e2da~mv2_d_3888_2592_s_4_2.jpg/v1/fill/w_640,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/911250_a8db7ff4befb483d8c79b54caf45e2da~mv2_d_3888_2592_s_4_2.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 100%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Canil Parque Bicentenario</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Canil+Parque+Bicentenario/@-33.403388,-70.6042636,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf4916594e67:0x65d0c8841d2ff86!8m2!3d-33.403388!4d-70.6020749">Av. Bicentenario 3236-3828</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/lapandillitacl/?_rdc=1&_rdr" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.0)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="http://www.fotografiaaerea.cl/imghtml/galeria/aerea/Plaza-La-Alcaldesa-RM-.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 100%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Parque Borderio</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Parque+Borderio,+Vitacura/@-33.3792642,-70.573495,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c9287f00f2ed:0x9c3789cebb6284d2!8m2!3d-33.3792642!4d-70.5713063">S.J Escrivá de Balaguer 6689</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://qmascotas.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <span class="text-dark"><b>(4.7)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+        <!-- End page content -->
+    </div>
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+</body>
+
+</html>

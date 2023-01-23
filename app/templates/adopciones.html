@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+        .w3-half img:hover {
+            opacity: 1
+        }
+    </style>
+    <style type="text/css">
+        @font-face {
+            font-family: Roboto;
+            src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf");
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand btn-shine" href="#" style="font-size: 2rem;"><b>Best For Pets</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/main">Home</a>
+                    </li>
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #DCE1DE;" href="/changepwd">Actualizar Password</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled">
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex" role="search">
+                    {% if not session.user %}
+                    <a href="/auth" class="btn btn-outline-info" type="submit">Iniciar Sesión</a>
+                    {% else %}
+                    <a href="/logout" class="btn btn-primary" type="submit">Cerrar Sesión</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="background-color: white;">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase">
+            <h1 class="w3-jumbo text-center text-dark"><b><div class="waviy">
+                <span style="--i:1;" class="text-dark">S</span>
+                <span style="--i:2;" class="text-dark">E</span>
+                <span style="--i:3;" class="text-dark">R</span>
+                <span style="--i:4;" class="text-dark">V</span>
+                <span style="--i:5;" class="text-dark">I</span>
+                <span style="--i:6;" class="text-dark">C</span>
+                <span style="--i:7;" class="text-dark">I</span>
+                <span style="--i:8;" class="text-dark">O</span>
+                <span style="--i:9;" class="text-dark">S</span>
+                <br>
+                <span style="--i:10;" class="text-dark">D</span>
+                <span style="--i:11;" class="text-dark">E</span>
+                <br>
+                <span style="--i:12;" class="text-dark">A</span>
+                <span style="--i:13;" class="text-dark">D</span>
+                <span style="--i:14;" class="text-dark">O</span>
+                <span style="--i:15;" class="text-dark">P</span>
+                <span style="--i:16;" class="text-dark">C</span>
+                <span style="--i:17;" class="text-dark">I</span>
+                <span style="--i:18;" class="text-dark">Ó</span>
+                <span style="--i:19;" class="text-dark">N</span>
+                </div></b></h1>
+            <hr style="width: 99%;border:5px solid #FF6542 " class="w3-round text-center">
+        </div>
+
+        <!-- Services -->
+        <div class="container text-center align-items-center">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://www.lascondesonline.cl/Archivos%20Generales/Css/v2/assets/homescreen/icon-196x196.png"
+                                alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Municipalidad de Las Condes</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Municipalidad+de+Las+Condes/@-33.4160266,-70.5992775,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf156dabe79f:0xb840ed450f20c0d3!8m2!3d-33.4160267!4d-70.5947928">Av. Apoquindo 3400</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.lascondes.cl/mascotas" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/munilascondes?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/munilascondes/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/muni_lascondes"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.3)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Municipalida+de+Las+Condes&oq=Municipalida+de+Las+Condes&aqs=chrome..69i57j46i10i131i433i512j0i10i512l3j69i60l3.6770j0j4&sourceid=chrome&ie=UTF-8#lrd=0x9662cf156dabe79f:0xb840ed450f20c0d3,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://urbanismosocial.cl/wp-content/uploads/2021/03/municipalidad-de-la-reina-1042x800.jpg"
+                                alt="foto agrupet" id="foto" style="width: 90.5%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Municipalidad de La Reina</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Municipalidad+de+la+Reina/@-33.4534617,-70.5326536,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ce47f094c613:0x7cacd53c10e8cedc!8m2!3d-33.4534372!4d-70.5307444?hl=es-419">A. Fernando Castillo Velasco 9925</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.lareina.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/MuniLaReina?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/munilareina/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/MuniLaReina?ref_src=twsrc%5Etfw%7Ctwcamp%5Eembeddedtimeline%7Ctwterm%5Eprofile%3AMuniLaReina&ref_url=https%3A%2F%2Fwww.lareina.cl%2F"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.9)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="static\img\supercan.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Fundación SuperCan</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Fundaci%C3%B3n+SuperCan/@-33.4199652,-70.5958672,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf36e9541671:0x437e40e6c2762236!8m2!3d-33.4199652!4d-70.5936785">San Crescente 384</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.supercan.cl/" class="btn btn-primary btn-two">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/fundacionsupercan/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/fundacionsupercan/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://mobile.twitter.com/supercanchile"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(5.0)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=fundacion+supercan&oq=fundacion+supercan&aqs=chrome..69i57j46i175i199i512.4250j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662cf36e9541671:0x437e40e6c2762236,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://scontent.fscl9-1.fna.fbcdn.net/v/t1.18169-9/14445951_663026757185810_8229950359934832368_n.png?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG2UlGZs7p32lLimhO0tTF57lrkkzeQzs3uWuSTN5DOzXPSjPd1SNXGLCyPAKra65uWBcwS_UkaOWFm8ZznJzcB&_nc_ohc=ozIRRYqCyWkAX8g2wj4&_nc_ht=scontent.fscl9-1.fna&oh=00_AfBPNENBC42FBj5PPaz5OoJf6HjwoX_2HWRkZQWlSxIONA&oe=63DD72C4"
+                                    alt="foto agrupet" id="foto" style="width: 71%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Centro de Rescate Canino </b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Centro+Rescate+Canino/@-33.4648617,-70.6290582,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c55e0d9c1745:0xadf8b07c623c10c7!8m2!3d-33.4648596!4d-70.6268584">Av. Vicuña Mackenna 1590</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://adopcionescrcnunoa.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/rescatecanino/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/crescatecanino/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://mobile.twitter.com/frescatecanino"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.4)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px;padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t31.18172-8/16422235_1519204098114443_5859470369440918330_o.png?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_eui2=AeHLfSpiOG0WkVLVe2jSMRaO9xLduSUwagv3Et25JTBqC2fAHLzGhOwDxrBtNWZyoCNBSL0GwLvLdgluNEGi48V6&_nc_ohc=EzbeawllXkYAX-7XhfT&_nc_ht=scontent.fscl9-2.fna&oh=00_AfC3xwBG793CQ3o4OiVk_FyDX6pSJH-6I6utn_3kZDcolQ&oe=63DD953D"
+                                    alt="foto agrupet" id="foto" style="width: 71%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Municipalidad de Santiago</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Municipalidad+de+Santiago/@-33.4370387,-70.6547199,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c5a36dc5bc8f:0x23dd4adfc674be42!8m2!3d-33.437032!4d-70.6502363">21 de Mayo 500</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.munistgo.cl/mascotas/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/munistgo?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/munistgo/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Muni_Stgo"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                                <div class="col">
+                                    <span class="text-dark"><b>(3.9)</b></span>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+        <!-- End page content -->
+    </div>
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+</body>
+
+</html>

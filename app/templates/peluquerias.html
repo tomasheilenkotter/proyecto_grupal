@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+        .w3-half img:hover {
+            opacity: 1
+        }
+    </style>
+    <style type="text/css">
+        @font-face {
+            font-family: Roboto;
+            src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf");
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand btn-shine" href="#" style="font-size: 2rem;"><b>Best For Pets</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/main">Home</a>
+                    </li>
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #DCE1DE;" href="/changepwd">Actualizar Password</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled">
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex" role="search">
+                    {% if not session.user %}
+                    <a href="/auth" class="btn btn-outline-info" type="submit">Iniciar Sesión</a>
+                    {% else %}
+                    <a href="/logout" class="btn btn-primary" type="submit">Cerrar Sesión</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="background-color: white;">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase">
+            <h1 class="w3-jumbo text-center text-dark"><b>PELUQUERIAS</b></h1>
+            <hr style="width: 99%;border:5px solid #FF6542 " class="w3-round text-center">
+        </div>
+
+        <!-- Services -->
+        <div class="container text-center align-items-center">
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">P</span>
+                <span style="--i:2;color: #FF6542;">R</span>
+                <span style="--i:3;color: #FF6542;">O</span>
+                <span style="--i:4;color: #FF6542;">V</span>
+                <span style="--i:5;color: #FF6542;">I</span>
+                <span style="--i:6;color: #FF6542;">D</span>
+                <span style="--i:7;color: #FF6542;">E</span>
+                <span style="--i:8;color: #FF6542;">N</span>
+                <span style="--i:9;color: #FF6542;">C</span>
+                <span style="--i:10;color: #FF6542;">I</span>
+                <span style="--i:11;color: #FF6542;">A</span>
+                </div></b></h1>
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://circulo.bicevida.cl/imgCMS/628cf3914562c_conv.jpg"
+                                alt="foto agrupet" id="foto" style="width: 94%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Club de Perros y Gatos los Leones</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Club+de+Perros+y+Gatos+Los+Leones/@-33.421745,-70.674942,13z/data=!3m1!5s0x9662cf694f51f34d:0x6dfb9950a3401be6!4m10!1m2!2m1!1sclub+de+perros+y+gatos!3m6!1s0x9662cf695a21d239:0x770680fe3cf411d4!8m2!3d-33.421745!4d-70.6049042!15sChZjbHViIGRlIHBlcnJvcyB5IGdhdG9zIgOIAQFaGCIWY2x1YiBkZSBwZXJyb3MgeSBnYXRvc5IBEHBldF9zdXBwbHlfc3RvcmXgAQA!16s%2Fg%2F11g9w78s2y">Av. Los Leones 220</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://clubdeperrosygatos.negocio.site/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/clubdeperrosygatos?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/clubdeperrosygatos.cl/?_ga=2.72186773.727734881.1672940356-244201098.1672940356&_gac=1.60474335.1672940356.CjwKCAiAh9qdBhAOEiwAvxIokx0DbQSvEFMKUnT0rZmtfJAueO00tKVBf0bDnkFuhQ33lRlGsq211hoCNscQAvD_BwE"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.7)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TLcsN7coNqo0YLRSNaiwNDMzSk4zszRNNDJMMTK2tDKoMDc3MLMwSEs1Tk4zMTRMMfFSTM4pTVJISVUoSC0qyi9WqFRITywB0jkgnJqfl1oMAFUQGtg&q=club+de+perros+y+gatos+los+leones&oq=club+de+perro&aqs=chrome.1.69i57j46i39i175i199j69i59j0i512j46i175i199i512l3j69i60.3481j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662cf695a21d239:0x770680fe3cf411d4,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://static.vecteezy.com/system/resources/previews/008/927/031/non_2x/dogs-grooming-and-cats-comb-and-scissors-vector.jpg"
+                                alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Peluqueria Mis Salchichas</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Peluquer%C3%ADa+Canina+y+Felina+Providencia+Mis+Salchichas/@-33.421745,-70.6399231,14z/data=!3m1!5s0x9662cf694f51f34d:0x6dfb9950a3401be6!4m10!1m2!2m1!1speluquerias+para+mascotas+cerca+de+Providencia!3m6!1s0x9662cfaa4c3a2b1b:0xbd438801cc4e0558!8m2!3d-33.4399258!4d-70.6133268!15sCi5wZWx1cXVlcmlhcyBwYXJhIG1hc2NvdGFzIGNlcmNhIGRlIFByb3ZpZGVuY2lhWjAiLnBlbHVxdWVyaWFzIHBhcmEgbWFzY290YXMgY2VyY2EgZGUgcHJvdmlkZW5jaWGSAQtwZXRfZ3Jvb21lcpoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VORE5HWkhNa2RSRUFF4AEA!16s%2Fg%2F11fk93tj7g">Antonio Varas 1414 95</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/peluqueriacaninaprovidenciamissalchichas?_rdc=1&_rdr" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/peluqueriacaninaprovidenciamissalchichas?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.0)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=peluqueria+mis+salchichas&oq=peluqueria+mis+sal&aqs=chrome.1.69i57j69i59j0i22i30l5j69i60.4327j0j9&sourceid=chrome&ie=UTF-8#lrd=0x9662cfaa4c3a2b1b:0xbd438801cc4e0558,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://www.mundopeludo.uy/img/my-shop-logo-1618625195.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Mundo Peludo SPA</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Mundo+Peludo+Spa/@-33.4185258,-70.605325,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf5f6cf98c01:0xdd1d2dfc540ea44a!8m2!3d-33.4185258!4d-70.6031363">Av. Providencia 2594, local 409</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.mundo-peludo.com/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/watch/MundoPeludoAqp/"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/mundopeludospa/?hl=es-la"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.6)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=mundo+peludo+spa&oq=mundo+peludo+spa&aqs=chrome.0.69i59j69i60.5270j1j9&sourceid=chrome&ie=UTF-8#lrd=0x9662cf5f6cf98c01:0xdd1d2dfc540ea44a,1,,,,"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="static\img\la_pandillita.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>La Pandillita</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/La+Pandillita+Petshop-Peluquer%C3%ADa+Canina-Consulta/@-33.4275511,-70.5919647,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf7bc3059289:0xc91428fef92c7e24!8m2!3d-33.4275501!4d-70.5897749">Tobalaba 1511</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/lapandillitacl/?_rdc=1&_rdr" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/watch/MundoPeludoAqp/"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/lapandillitacl/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.7)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="static\img\q'mascotas.png"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Q'Mascotas Chile</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Q'+Mascotas+Chile/@-33.4269283,-70.6172637,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf6487568f53:0x2ff3e2b70ae41d2!8m2!3d-33.4269283!4d-70.615075">Av. Providencia 1685</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://qmascotas.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/qmascotas.cl/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/qmascotas.cl/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/qmascotaschile"><i class="fa fa-twitter w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.3)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">L</span>
+                <span style="--i:2;color: #FF6542;">A</span>
+                <span style="--i:3;color: #FF6542;">S</span>
+                <br>
+                <span style="--i:4;color: #FF6542;">C</span>
+                <span style="--i:5;color: #FF6542;">O</span>
+                <span style="--i:6;color: #FF6542;">N</span>
+                <span style="--i:7;color: #FF6542;">D</span>
+                <span style="--i:8;color: #FF6542;">E</span>
+                <span style="--i:9;color: #FF6542;">S</span>
+                </div></b></h1>
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="static\img\mon'petit.png"
+                                alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Mon Petit's - Estetica Canina y Felina</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Mon+Petit's+-+Estetica+Canina+y+Felina/@-33.411964,-70.5634758,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf65ec6e3ec3:0xeea43beb04dc72da!8m2!3d-33.411964!4d-70.5612871">IV Centenario 455</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/peluqueriamonpetits/?_rdc=1&_rdr" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/peluqueriamonpetits/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/peluqueriamonpetits/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.8)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://lh3.googleusercontent.com/m3ETTAjB2BjeyaQv7RZVouIHmSlICnaH7neqHfr-v3QozSfBFX2aVXwO86P3vNRJXCe_VgMMABhxEq_Hg7chZI4Rzl31b8426abdUS1CBqv7QfNK=s120" alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Veterinaria y Peluqueria - PetsMann</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Veterinaria+y+Peluquer%C3%ADa+-+PetsMann/@-33.413698,-70.5808517,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf1f4022da8d:0xeae5e03be2fc60f7!8m2!3d-33.413698!4d-70.578663">Coronel Pereira 180</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://petsmann.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/petsmann/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/petsmann.cl/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.6)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="static\img\my_can.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>My Can Peluqueria y Tienda</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/My+Can+Peluqueria+y+Tienda+De+Mascotas/@-33.3913259,-70.54459,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf0b37b40387:0x3e95f8c6d414b400!8m2!3d-33.3913259!4d-70.5424013">Av. las Condes 9236</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/mycan.cl/?_rdc=1&_rdr" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/mycan.cl/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/mycan.cl/?hl=es"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.5)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="data:image/png;base64,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"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Paws Pet Store</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Paws+Pet+Store/@-33.4880614,-70.6810089,12z/data=!4m10!1m2!2m1!1spaws+pet!3m6!1s0x9662cf6f90a7f8c1:0x3d7587b7f10237d7!8m2!3d-33.4079714!4d-70.5552871!15sCghwYXdzIHBldFoKIghwYXdzIHBldJIBEHBldF9zdXBwbHlfc3RvcmXgAQA!16s%2Fg%2F11rzn6jfgp">Av. Apoquindo 7122</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.pawspetstore.cl/?utm_source=maps&utm_medium=organic&utm_campaign=seo-local" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/PawsPetStoreChile/"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/pawspetstorechile/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(5.0)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="static\img\milu_pet.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Milu Pet</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Milu+Pet+Sucursal+Las+Condes/@-33.4246181,-70.647272,12z/data=!4m10!1m2!2m1!1smilu+pet!3m6!1s0x9662cff9b4d98cb5:0xeec710be2d963782!8m2!3d-33.4123978!4d-70.5972003!15sCghtaWx1IHBldFoKIghtaWx1IHBldJIBEHBldF9zdXBwbHlfc3RvcmXgAQA!16s%2Fg%2F11lh37fncv">Pdte. Riesco 3198, local B</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://milupet.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/milupetonline/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/milupetcl/?hl=es"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.3)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">L</span>
+                <span style="--i:2;color: #FF6542;">A</span>
+                <br>
+                <span style="--i:3;color: #FF6542;">R</span>
+                <span style="--i:4;color: #FF6542;">E</span>
+                <span style="--i:5;color: #FF6542;">I</span>
+                <span style="--i:6;color: #FF6542;">N</span>
+                <span style="--i:7;color: #FF6542;">A</span>
+                </div></b></h1>
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="static\img\pet_luqueria.jpg"
+                                alt="foto agrupet" id="foto" style="width: 92%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>La Pet-Luqueria</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/La+Pet-Luqueria/@-33.4388864,-70.5562808,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf7e1f9c6521:0xf6d01b4985728b3b!8m2!3d-33.4388864!4d-70.5540921">Príncipe de Gales 7434</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="http://www.lapetluqueria.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/profile.php?id=100044654666425"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/lapetluqueria/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.6)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="static\img\tree_pet_store.jpg" alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Tree Pet Store</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Tree+Pet+Store/@-33.452056,-70.5570497,17z/data=!3m1!4b1!4m5!3m4!1s0x9662ce3f5fb9061d:0xaf83a33c4d5b6b5f!8m2!3d-33.452056!4d-70.554861">A. Fernando Castillo Velasco 7059</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.treepet.cl/" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/TreePet.cl/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/treepetstore/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.6)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://sp-ao.shortpixel.ai/client/q_glossy,ret_img,w_600/http://www.republicaanimal.cl/wp-content/uploads/2019/03/PIC.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>República Animal</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/REPUBLICA+ANIMAL/@-33.4448553,-70.5675982,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cf795e88cb43:0x8151cd7cc78bb49e!8m2!3d-33.4448546!4d-70.5654096">Av. Echeñique 6401</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="http://www.republicaanimal.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/ClinicaVeterinariaRepublicaAnimal/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/republica_animal_veterinaria/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.4)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="static\img\medvet.png"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Clínica Veterinaria MedVet</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Clinica+Veterinaria+MedVet/@-33.4362894,-70.5763223,17z/data=!3m1!4b1!4m5!3m4!1s0x9662d0378f1f9f51:0x412b931be490353f!8m2!3d-33.4362894!4d-70.5741336">Av. Ossa 1778</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://veterinariamedvet.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/Cl%C3%ADnica-Veterinaria-Medvet-658397154219286/?fref=ts&_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/veterinariamedvet/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.0)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="static\img\petblanco.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>PetBlanco</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/PetBlanco/@-33.4245591,-70.7173167,11z/data=!4m10!1m2!2m1!1spetBlanco!3m6!1s0x9662ce12e4e4ffd3:0xbad5554f2a54679c!8m2!3d-33.4515695!4d-70.5408443!15sCglwZXRCbGFuY2-SAQx2ZXRlcmluYXJpYW7gAQA!16s%2Fg%2F11c48pm8b8">A. Fernando Castillo Velasco 8751</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://petblanco.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/petblanco/?_ga=2.125818504.329629570.1672866048-1127283110.1672596353&_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/petblanco/?_ga=2.125818504.329629570.1672866048-1127283110.1672596353"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.6)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h1 class="text text-center text-dark" style="font-size: 60px;color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">V</span>
+                <span style="--i:2;color: #FF6542;">I</span>
+                <span style="--i:3;color: #FF6542;">T</span>
+                <span style="--i:4;color: #FF6542;">A</span>
+                <span style="--i:5;color: #FF6542;">C</span>
+                <span style="--i:6;color: #FF6542;">U</span>
+                <span style="--i:7;color: #FF6542;">R</span>
+                <span style="--i:8;color: #FF6542;">A</span>
+                </div></b></h1>
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="static\img\matilde_boutique.jpg"
+                                alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Matilde Boutique</b></h5>
+                            <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.google.com/maps/place/Peluquer%C3%ADa+Canina+sin+Estr%C3%A9s%2Fsin+Caniles-+MatildeBoutique/@-33.3903515,-70.5530085,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c92d0c01c185:0xcfb6b489fb1ceb3e!8m2!3d-33.3903144!4d-70.5508397">Av. Pdte. Kennedy 8324</a></p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/MatildeBoutique/?_rdc=1&_rdr" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/MatildeBoutique/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/matildeboutique/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.5)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center"
+                        style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                        <div class="card-header">
+                            <img src="https://www.loscobresdevitacura.cl/wp-content/uploads/2019/07/A04-doggy-style-logo.jpg" alt="foto agrupet" id="foto" style="width: 70%;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Doggys Style Peluqueria</b></h5>
+                            <p class="card-text">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Doggys+style+peluqueria+canina/@-33.3883423,-70.5700072,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c906bee9f84d:0xa2281b097f67baee!8m2!3d-33.3883423!4d-70.5678185">Av Vitacura 6724 local, A04</a>
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/people/Doggys-Style-Peluquer%C3%ADa-Canina/100063719554832/?_rdc=1&_rdr" class="btn btn-primary">Visitar página</a>
+                        </div>
+                        <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                            <div class="col">
+                                <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/people/Doggys-Style-Peluquer%C3%ADa-Canina/100063719554832/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                            </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(5.0)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="static\img\patitas_colitas.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Patitas y Colitas Pet & Spa</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/PATITAS+Y+COLITAS+Pet+%26+Spa/@-33.4009488,-70.5958653,17z/data=!3m1!4b1!4m5!3m4!1s0x9662cfb181f54dbb:0x378fabbf96a15fc4!8m2!3d-33.4009488!4d-70.5936766">Candelaria Goyenechea 3820</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://patitas-y-colitas-pet-spa.negocio.site/?utm_source=gmb&utm_medium=referral" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/profile.php?id=100063583241060"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/patitasycolitas.cl/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(5.0)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://pbs.twimg.com/profile_images/1161395670114172928/PoISY16W_400x400.jpg"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Arf</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Arf/@-33.3859112,-70.5615767,17z/data=!3m1!4b1!4m5!3m4!1s0x9662c932fd74dcef:0x3869e4e7a41405bf!8m2!3d-33.3859112!4d-70.559388">Av. Vitacura 7773</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://arf.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/arf.santiago/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/arf.vitacura/"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                            <div class="col">
+                                <span class="text-dark"><b>(4.5)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center"
+                            style="width: 380px; padding-top: 0px;padding-left: 0px;padding-right: 0px;height: 460px;">
+                            <div class="card-header">
+                                <img src="https://www.paseoquilin.cl/wp-content/uploads/2019/03/pet-happy.png"
+                                    alt="foto agrupet" id="foto" style="width: 70%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Pet Happy</b></h5>
+                                <p class="card-text"><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.google.com/maps/place/Pet+Happy+El+Tamarugo,+Vitacura/@-33.3986597,-70.6211461,14z/data=!4m10!1m2!2m1!1spet+happy!3m6!1s0x9662cfdc7101cf15:0xed273b1a23aedadf!8m2!3d-33.3986597!4d-70.5861272!15sCglwZXQgaGFwcHmSAQx2ZXRlcmluYXJpYW7gAQA!16s%2Fg%2F11gtyg__xr">Av. Vitacura 4607</a></p>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.pethappy.cl/" class="btn btn-primary">Visitar página</a>
+                            </div>
+                            <div class="card-footer text-muted row" style="width: 390px;background-color: transparent; border-color: transparent;">
+                                <div class="col">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://web.facebook.com/PetHappyCL/?_rdc=1&_rdr"><i class="fa fa-facebook-official w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/pethappycl/?hl=es-la"><i class="fa fa-instagram w3-hover-opacity text-dark" style="font-size: 18px"></i></a>
+                                </div>
+                                <div class="col">
+                                <span class="text-dark"><b>(4.8)</b></span>
+                                <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-star text-warning" style="font-size: 18px"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+        <!-- End page content -->
+    </div>
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+        .w3-half img:hover {
+            opacity: 1
+        }
+    </style>
+    <style type="text/css">
+        @font-face {
+            font-family: Roboto;
+            src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf");
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand btn-shine" href="#" style="font-size: 2rem;"><b>Best For Pets</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/main">Home</a>
+                    </li>
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #DCE1DE;" href="/changepwd">Actualizar Password</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled">
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex" role="search">
+                    {% if not session.user %}
+                    <a href="/auth" class="btn btn-outline-info" type="submit">Iniciar Sesión</a>
+                    {% else %}
+                    <a href="/logout" class="btn btn-primary" type="submit">Cerrar Sesión</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="background-color: white;">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase">
+            <h1 class="w3-jumbo text-center text-dark"><b>Lo mejor para tu mascota lo encuentras aquí</b></h1>
+        </div>
+
+        <!-- Services -->
+        <div class="w3-container" id="services" style="margin-top:75px">
+            <h1 class="w3-large" style="color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">C</span>
+                <span style="--i:2;color: #FF6542;">a</span>
+                <span style="--i:3;color: #FF6542;">t</span>
+                <span style="--i:4;color: #FF6542;">e</span>
+                <span style="--i:5;color: #FF6542;">g</span>
+                <span style="--i:6;color: #FF6542;">o</span>
+                <span style="--i:7;color: #FF6542;">r</span>
+                <span style="--i:8;color: #FF6542;">i</span>
+                <span style="--i:9;color: #FF6542;">a</span>
+                <span style="--i:10;color: #FF6542;">s</span>
+                </div></b></h1>
+            <hr style="width:50px;border:5px solid #FF6542 " class="w3-round">
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <a href="/clinicas">
+                        <button class="text-center mb-4 bn5">
+                            <i class="fa fa-stethoscope" aria-hidden="true"></i>
+                            <h5>CLINICAS VETERINARIAS</h5>
+                        </button>
+                    </a>
+                </div><div class="col-sm-6 col-md-4">
+                    <a href="/locales">
+                        <button class="text-center mb-4 bn5">
+                            <i class="fa fa-cutlery" aria-hidden="true"></i>
+                            <h5>LOCALES PET FRIENDLY</h5>
+                        </button>
+                    </a>
+                </div><div class="col-sm-6 col-md-4">
+                    <a href="/peluquerias">
+                        <button class="text-center mb-4 bn5">
+                            <i class="fa fa-scissors"></i>
+                            <h5>PELUQUERIAS</h5>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <a href="/parques">
+                        <button class="text-center mb-4 bn5">
+                            <i class="fa fa-tree"></i>
+                            <h5>PARQUES</h5>
+                        </button>
+                    </a>
+                </div><div class="col-sm-6 col-md-4">
+                    <a href="/hoteles">
+                        <button class="text-center mb-4 bn5">
+                            <i class="fa fa-h-square"></i>
+                            <h5>HOTELES</h5>
+                        </button>
+                    </a>
+                </div><div class="col-sm-6 col-md-4">
+                    <a href="/adopciones">
+                        <button class="text-center mb-4 bn5">
+                            <i class="fa fa-id-card-o"></i>
+                            <h5>SERVICIOS DE ADOPCIÓN</h5>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Designers -->
+        <div class="w3-container" id="designers" style="margin-top:75px">
+            <h1 class="w3-large" style="color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">E</span>
+                <span style="--i:2;color: #FF6542;">q</span>
+                <span style="--i:3;color: #FF6542;">u</span>
+                <span style="--i:4;color: #FF6542;">i</span>
+                <span style="--i:5;color: #FF6542;">p</span>
+                <span style="--i:6;color: #FF6542;">o</span>
+                </div></b></h1>
+            <hr style="width:50px;border:5px solid #FF6542" class="w3-round">
+            <p class="text-dark">El mejor equipo del mundo.</p>
+            <p class="text-dark">Este es el equipo de Best for Pets, conformado el año 2022 con el fin de otorgarle a los usuarios una página web que ofrezca los mejores lugares para tu compañero de vida. 
+                Porque en Best for Pets no los consideramos mascotas, son parte de la familia y por lo mismo hay que darles lo mejor de lo mejor!
+            </p>
+            <p class="text-dark">Nuestros diseñadores son especialmente seleccionados:</p>
+        </div>
+
+        <!-- The Team -->
+        <div class="w3-row-padding w3-grayscale">
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-light-grey">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="John" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Tomás Heilenkotter</h3>
+                        <p class="w3-opacity">CEO &amp; Founder</p>
+                        <p>
+                            Python Full Stack Developer de Coding Dojo.<br>
+                            Ingeniero Civil Informatico en Ciencias de la Computación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-light-grey">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Jane" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Matías Bensan</h3>
+                        <p class="w3-opacity">Co-Founder</p>
+                        <p>
+                            Python Full Stack Developer e Instructor en Coding Dojo. <br>
+                            Ingenierio Civil Informatico en Ciencias de la Computación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-light-grey">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Mike" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Patricio Fuentealba</h3>
+                        <p class="w3-opacity">Co-Founder</p>
+                        <p>
+                            Python Full Stack Developer e Instructor en Coding Dojo. <br>
+                            Ingeniero Civil Informatico en CIencias de la Computación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Packages / Pricing Tables -->
+        <div class="w3-container" id="packages" style="margin-top:75px">
+            <h1 class="w3-large" style="color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">P</span>
+                <span style="--i:2;color: #FF6542;">l</span>
+                <span style="--i:3;color: #FF6542;">a</span>
+                <span style="--i:4;color: #FF6542;">n</span>
+                <span style="--i:5;color: #FF6542;">e</span>
+                <span style="--i:6;color: #FF6542;">s</span>
+                </div></b></h1>
+            <hr style="width:50px;border:5px solid #FF6542" class="w3-round">
+            <p class="text-dark">
+                Con el fin de tener una mayor exposición en nuestra página, ofrecemos dos tipos de suscripción que cuentan con diferentes beneficios
+                dependiendo de lo que más le acomode a su empresa.
+            </p>
+        </div>
+
+        <div class="w3-row-padding">
+            <div class="w3-half w3-margin-bottom">
+                <ul class="w3-ul w3-light-grey w3-center">
+                    <li class="w3-dark-grey w3-xlarge w3-padding-32">Basico</li>
+                    <li class="w3-padding-16">10 horas de soporte en línea</li>
+                    <li class="w3-padding-16">Fotografias en 1080p</li>
+                    <li class="w3-padding-16">50% de exposición extra</li>
+                    <li class="w3-padding-16">2 Solicitudes al mes para modificación</li>
+                    <li class="w3-padding-16">
+                        <h2>$ 20</h2>
+                        <span class="w3-opacity">mensual</span><br>
+                    </li>
+                    <li class="w3-light-grey w3-padding-24">
+                        <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="w3-half">
+                <ul class="w3-ul w3-light-grey w3-center">
+                    <li class="w3-xlarge w3-padding-32 text-dark" style="background-color: #FF6542;">Pro</li>
+                    <li class="w3-padding-16">50 horas de soporte en línea y mantención</li>
+                    <li class="w3-padding-16">Fotografias en 4K</li>
+                    <li class="w3-padding-16">100% de exposición extra</li>
+                    <li class="w3-padding-16">Modificaciones sin límite</li>
+                    <li class="w3-padding-16">
+                        <h2>$ 40</h2>
+                        <span class="w3-opacity">mensual</span>
+                    </li>
+                    <li class="w3-light-grey w3-padding-24">
+                        <button class="w3-button w3-padding-large w3-hover-black" style="background-color: #FF6542; color: white;">Sign Up</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="w3-container" id="contact" style="margin-top:75px">
+            <h1 class="w3-large" style="color: #FF6542;"><b><div class="waviy">
+                <span style="--i:1;color: #FF6542;">C</span>
+                <span style="--i:2;color: #FF6542;">o</span>
+                <span style="--i:3;color: #FF6542;">n</span>
+                <span style="--i:4;color: #FF6542;">t</span>
+                <span style="--i:5;color: #FF6542;">a</span>
+                <span style="--i:6;color: #FF6542;">c</span>
+                <span style="--i:7;color: #FF6542;">t</span>
+                <span style="--i:8;color: #FF6542;">a</span>
+                <span style="--i:9;color: #FF6542;">n</span>
+                <span style="--i:10;color: #FF6542;">o</span>
+                <span style="--i:11;color: #FF6542;">s</span>
+                </div></b></h1>
+            <hr style="width:50px;border:5px solid #FF6542" class="w3-round">
+            <p class="text-dark">Te gustaria ser parte de Best for Pets? Dejanos tu nombre, mail de empresa y razón por la cual crees que deberias ser socio de esta increíble familia 
+                y te contestaremos a la brevedad ;)
+            </p>
+            <form action="/action_page.php" target="_blank">
+                <div class="w3-section">
+                    <label class="text-dark">Name</label>
+                    <input class="w3-input w3-border" type="text" name="Name" required="">
+                </div>
+                <div class="w3-section">
+                    <label class="text-dark">Email</label>
+                    <input class="w3-input w3-border" type="text" name="Email" required="">
+                </div>
+                <div class="w3-section">
+                    <label class="text-dark">Message</label>
+                    <input class="w3-input w3-border" type="text" name="Message" required="">
+                </div>
+                <a href="/main" style="text-decoration: none;"><button type="submit" class="w3-button w3-block w3-padding-large w3-margin-bottom" style="background-color: #FF6542; color: white;">Send Message</button></a>
+            </form>
+        </div>
+
+        <!-- End page content -->
+    </div>
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+</body>
+
+</html>
